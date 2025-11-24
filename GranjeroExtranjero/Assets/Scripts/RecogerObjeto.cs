@@ -10,9 +10,9 @@ public class RecogerObjeto : MonoBehaviour
         inventario = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventario>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
         inventario.Cantidad = inventario.Cantidad + 1;
         Destroy(gameObject);
