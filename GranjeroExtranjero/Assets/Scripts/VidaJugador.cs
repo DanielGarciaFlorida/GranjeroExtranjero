@@ -2,33 +2,28 @@ using UnityEngine;
 
 public class VidaJugador : MonoBehaviour
 {
-    public int MaxSalud = 3;
-    private int SaludActual;
-    public int daño = 1;
+    public int salud;
+    public int maxSalud = 3;
+
+    public SpriteRenderer jugadorSR;
+    public PlayerMovement playerMovement;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Awake()
+        salud = maxSalud; 
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RecibirDaño(int amount)
     {
-        
+        salud -= amount;
+        if(salud <= 0)
+        {
+            jugadorSR.enabled = false;
+            playerMovement.enabled = false;
+        }
     }
 
-    private void Awake()
-    {
-        SaludActual = MaxSalud;
-    }
 
-    public void DañoRecibido(int daño)
-    {
-        if(SaludActual == 0) return;
-
-        SaludActual -= daño;
-
-        if(SaludActual <0) SaludActual = 0;
-    }
 }
