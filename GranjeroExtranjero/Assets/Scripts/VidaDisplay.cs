@@ -4,46 +4,37 @@ using UnityEngine.UI;
 public class VidaDisplay : MonoBehaviour
 {
 
-    public int salud;
-    public int maxSalud;
+    
+    public int lives = 3;       
+    public int maxLives = 3;    
 
-    public Sprite corazonvacio;
-    public Sprite corazonlleno;
-    public Image[] corazones;
+    
+    public RawImage[] fullHearts;  
+    public RawImage[] emptyHearts; 
 
-    public VidaJugador vidaJugador;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void UpdateHearts()
     {
-        
+        for (int i = 0; i < maxLives; i++)
+        {
+            if (i < lives)
+            {
+                fullHearts[i].enabled = true;
+                emptyHearts[i].enabled = false;
+            }
+            else
+            {
+                fullHearts[i].enabled = false;
+                emptyHearts[i].enabled = true;
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage()
     {
-        salud = vidaJugador.salud;
-        maxSalud = vidaJugador.maxSalud;
-
-        for(int i = 0; i < corazones.Length; i++)
+        if (lives > 0)
         {
-          if(i < salud)
-          {
-              corazones[i].sprite = corazonlleno;
-          }
-          else
-          {
-              corazones[i].sprite = corazonvacio;
-          }
-
-          if(i < maxSalud)
-          {
-            corazones[i].enabled = true;
-          }
-          else
-          {
-            corazones[i].enabled = false;
-          }
+            lives--;
+            UpdateHearts();
         }
     }
 }

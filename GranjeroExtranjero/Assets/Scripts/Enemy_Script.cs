@@ -6,10 +6,20 @@ public class Enemy_Script : MonoBehaviour
     
      private float speed = 3f;            
      private float detectionRange = 5f;   
-     private float stopDistance = 1.2f;   
+     private float stopDistance = 1.2f;
 
     
-     public Transform player;            
+
+    public Transform player;
+
+
+
+    private void Start()
+    {
+        
+    }
+
+
 
     private void Update()
     {
@@ -32,4 +42,7 @@ public class Enemy_Script : MonoBehaviour
             transform.localScale = scale;
         }
     }
+
+    
+
 }
