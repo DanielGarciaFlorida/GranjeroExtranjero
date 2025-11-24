@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
 
 public class SkillChest : MonoBehaviour
 {
@@ -6,10 +9,20 @@ public class SkillChest : MonoBehaviour
     public GameObject rouletteUI;      
     public float rouletteTime = 2f;
 
+    public GameObject RuletaUI;
+    private RuletaUI roulette;
+
     private bool playerNearby = false;
     private bool chestOpened = false;
 
     private PlayerSkills playerSkills;
+
+    public void Start()
+    {
+        roulette = rouletteUI.GetComponent<RuletaUI>();
+    }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,7 +39,7 @@ public class SkillChest : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerNearby = false;
-            interactText.SetActive(true);
+            interactText.SetActive(false);
         }
     }
 
@@ -45,20 +58,19 @@ public class SkillChest : MonoBehaviour
         StartCoroutine(StartRoulette());
     }
 
-    System.Collections.IEnumerator StartRoulette()
+    public IEnumerator StartRoulette()
     {
         rouletteUI.SetActive(true);
 
         
-        yield return new WaitForSeconds(rouletteTime); // Simula ahora mismo la ruleta, no existe aun, ns si habrá ruleta visualmente ¿?¿??¿
+        yield return StartCoroutine(roulette.PlayRoulette());
 
         
-        int randomSkill = Random.Range(0, 4); // Elige la habilidad random
+        int selectedSkill = roulette.GetSelectedSkill();
 
         
-        playerSkills.UnlockSkill(randomSkill); // Aplicar la habilidad que tocó al jugador
+        playerSkills.UnlockSkill(selectedSkill);
 
-         
-        rouletteUI.SetActive(false); // Oculta la ruleta
+        rouletteUI.SetActive(false);
     }
 }
