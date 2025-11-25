@@ -66,7 +66,7 @@ La función GetSelectedSkill() devuelve el índice de la opción final seleccion
 
 Y este sería el resultado, completamente funcional.
 
-![](/README_Content/video01.gifg)
+![](/README_Content/video01.gif)
 
 ## Sistema de vidas
 
