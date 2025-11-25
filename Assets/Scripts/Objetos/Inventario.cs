@@ -1,4 +1,4 @@
-﻿internal class Inventario
+﻿internal class Inventario 
 {
     internal int Cantidad = 0;
 }

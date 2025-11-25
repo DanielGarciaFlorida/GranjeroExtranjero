@@ -58,7 +58,6 @@ public class HeartsUI : MonoBehaviour
                 emptyHearts[i].enabled = !alive;
         }
     }
-
     public void TakeDamage(int amount = 1)
     {
         if (amount <= 0) return;
@@ -71,15 +70,12 @@ public class HeartsUI : MonoBehaviour
             
         }
     }
-
     public void Heal(int amount = 1)
     {
         if (amount <= 0) return;
         lives = Mathf.Clamp(lives + amount, 0, maxLives);
         UpdateHearts();
     }
-
-    
     public static HeartsUI FindInstance()
     {       
         return Object.FindFirstObjectByType<HeartsUI>();

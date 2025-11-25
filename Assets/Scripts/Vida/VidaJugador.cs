@@ -13,7 +13,7 @@ public class VidaJugador : MonoBehaviour
 
     private void Start()
     {
-        hearts = HeartsUI.FindInstance(); // mejor cachear la referencia
+        hearts = HeartsUI.FindInstance(); 
         if (hearts == null) Debug.LogWarning("[PlayerDamageOnHit] No se encontró HeartsUI en la escena.");
 
         salud = maxSalud;

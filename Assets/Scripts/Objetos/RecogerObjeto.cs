@@ -1,21 +1,23 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RecogerObjeto : MonoBehaviour
 {
-    Inventario inventario;
+
+    public SpriteRenderer objetoSR;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        inventario = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventario>();
+        objetoSR = GetComponent<SpriteRenderer>();
     }
 
-    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-        inventario.Cantidad = inventario.Cantidad + 1;
-        Destroy(gameObject);
+            objetoSR.enabled = false;
+            Destroy(this.gameObject);
         }
     }
 
