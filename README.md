@@ -1,6 +1,6 @@
 El proyecto consiste en un juego al estilo Super Mario Bross o Hollow Knight. 
 
-##Mecánica de movimiento del jugador
+## Mecánica de movimiento del jugador
 El siguiente script PlayerMovement se encarga de gestionar el movimiento básico del personaje: desplazamiento horizontal, gravedad y salto. Es un sistema sencillo pero totalmente funcional que permite controlar al jugador sin necesidad de Rigidbody2D ni físicas de Unity, ya que todo se calcula manualmente mediante modificaciones directas a la posición del objeto.
 
 En el método Start(), se asignan los valores base del movimiento del jugador, como la velocidad horizontal, la fuerza del salto y el nivel del suelo. También se reinicia la velocidad vertical para asegurar que el personaje comienza sin movimiento en el eje Y.
@@ -28,7 +28,7 @@ Mientras el jugador esté en el aire, se aplica la gravedad restando valor conti
 
 ## Mecánica del cofre
 Para las habilidades que el jugador puede desbloquear abriendo el cofre, he creado este script, es simplemente prueba, faltaría pulir las habilidades, pero en principio la base del script es funcional. Creé 4 booleanas y empiezan en false y la habilidad que toque en el cofre se pondrá a true y la habilidad se activará.
-También debes llamar al script del jugador para coger el parámetro de movimiento, para cambiar su valor dependiendo de lo que toque
+También debes llamar al script del jugador para coger el parámetro de movimiento, para cambiar su valor dependiendo de lo que toque.
 
 ![](/README_Content/foto1.jpeg)
 
@@ -64,19 +64,19 @@ La función GetSelectedSkill() devuelve el índice de la opción final seleccion
 
 ![](/README_Content/foto7.jpeg)
 
-Y este sería el resultado, completamente funcional
+Y este sería el resultado, completamente funcional.
 
-![](/README_Content/video1.mp4)
+![](/README_Content/video01.gifg)
 
-##Sistema de vidas
+## Sistema de vidas
 
 Hemos logrado implementar un sistema de puntos de salud, en donde por cada golpe del enemigo se resta un corazón, y al llegar a 3 corazones vacíos el jugador "muere".
 
-Para el sistema de vidas, primero creamos 2 arrays, donde en una arrastraremos los corazones llenos, y en el otro array arrastraremos los corazones vacios
+Para el sistema de vidas, primero creamos 2 arrays, donde en una arrastraremos los corazones llenos, y en el otro array arrastraremos los corazones vacíos.
 
 ![](/README_Content/foto9.jpeg)
 
-De tal manera que el resultado sea este, así se vería en el inspector de Unity
+De tal manera que el resultado sea este, así se vería en el inspector de Unity.
 
 ![](/README_Content/foto10.jpeg)
 
@@ -91,11 +91,11 @@ Este método RecibirDaño() resta la cantidad de daño a la salud del jugador. S
 
 ![](/README_Content/foto12.jpeg)
 
-Asi sería el resultado final de nuestro sistema de vidas del personaje, totalmente funcional
+Asi sería el resultado final de nuestro sistema de vidas del personaje, totalmente funcional.
 
-![](/README_Content/video2.mp4)
+![](/README_Content/video02.gif)
 
-##Sistema de recolección de objetos e inventario
+## Sistema de recolección de objetos e inventario
 
 El script implementa la interacción de recolección de ítems. A su vez, se implementa un inventario, en el cual se establece una referencia en la inicialización del script de recolección del jugador, buscándolo por la Tag "Player".
 
@@ -108,6 +108,6 @@ El jugador debe tener Rigibody2D, ya que sin Rigibody2D no hay OnTriggerEnter2D.
 
 ![](/README_Content/foto15.jpeg)
 
-Y así sería el resultado, ahora el jugador puede recolectar los objetos del mapa
+Y así sería el resultado, ahora el jugador puede recolectar los objetos del mapa.
 
-![](/README_Content/video3.mp4)
+![](/README_Content/video03.gif)
