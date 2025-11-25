@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		speed = 5.0f;
 		gravity = 9.8f;
-		impulse = 7.0f;
+		impulse = 8.5f;
 		groundY = -4.5f;
 	}
 

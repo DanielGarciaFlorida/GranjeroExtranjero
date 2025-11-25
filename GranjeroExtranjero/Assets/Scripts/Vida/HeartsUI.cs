@@ -81,7 +81,7 @@ public class HeartsUI : MonoBehaviour
 
     
     public static HeartsUI FindInstance()
-    {
-        return FindObjectOfType<HeartsUI>();
-    }
+    {       
+        return Object.FindFirstObjectByType<HeartsUI>();
+	}
 }
