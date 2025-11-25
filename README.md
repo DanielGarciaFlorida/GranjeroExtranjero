@@ -5,7 +5,7 @@ El siguiente script PlayerMovement se encarga de gestionar el movimiento básico
 
 En el método Start(), se asignan los valores base del movimiento del jugador, como la velocidad horizontal, la fuerza del salto y el nivel del suelo. También se reinicia la velocidad vertical para asegurar que el personaje comienza sin movimiento en el eje Y.
 
-![](/README_Content/foto16.png)
+![](/README_Content/foto21.png)
 
 Dentro del método Update(), primero se captura el input horizontal del jugador mediante Input.GetAxis("Horizontal"). Este valor se multiplica por la velocidad y por Time.deltaTime para asegurar un movimiento fluido y dependiente del tiempo.
 
