@@ -1,45 +1,54 @@
 ﻿using UnityEngine;
-
 public class PlayerMovement : MonoBehaviour
 {
-	public float speed;       
-	public float gravity;      
-	public float impulse;      
-	public float groundY;     
+	public float moveSpeed;
+	public float gravity;
+	public float jumpImpulse;
+	public float groundY;
+	public float jumpsLeft;
+	public float maxJumps = 2;
 
-	private bool isGrounded = true;
+	private float verticalVelocity = 0f;
+	private bool isGrounded;
 
-	void Start()
+	private void Start()
 	{
-		speed = 5.0f;
+		moveSpeed = 5f;
 		gravity = 9.8f;
-		impulse = 8.5f;
+		jumpImpulse = 8.5f;
 		groundY = -4.5f;
+		verticalVelocity = 0f;
+		//jumpsLeft = 2;
 	}
-
 	void Update()
 	{
 		float moveHorizontal = Input.GetAxis("Horizontal");
-		transform.position += new Vector3(moveHorizontal * Time.deltaTime * 5f, 0, 0);
-		if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+		transform.position += new Vector3(moveHorizontal * moveSpeed * Time.deltaTime, 0, 0);
+
+		if (transform.position.y <= groundY)
 		{
-			speed = impulse;
+			transform.position = new Vector3(transform.position.x, groundY, transform.position.z);
+			verticalVelocity = 0f;
+			isGrounded = true;
+			//jumpsLeft = maxJumps;
+
+		}
+		else
+		{
 			isGrounded = false;
 		}
 
+		if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+		{
+			verticalVelocity = jumpImpulse;
+			isGrounded = false;
+			//jumpsLeft--;
+		}
 
 		if (!isGrounded)
 		{
-			speed -= gravity * Time.deltaTime;
-			transform.position += Vector3.up * speed * Time.deltaTime;
-
-		}	
-			if (transform.position.y <= groundY)
-			{
-				transform.position = new Vector3(transform.position.x, groundY, transform.position.z);
-				isGrounded = true;
-				speed = 0f; new Vector2(transform.position.x, transform.position.y);
+			verticalVelocity -= gravity * Time.deltaTime;
+			transform.position += Vector3.up * verticalVelocity * Time.deltaTime;
 		}
-
 	}
-}
+}

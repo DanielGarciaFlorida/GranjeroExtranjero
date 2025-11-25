@@ -25,13 +25,13 @@ public class PlayerSkills : MonoBehaviour
 
             case 1:
                 speedBoost = true;
-                movement.speed += 2f;
+                movement.moveSpeed += 2f;
                 Debug.Log("Habilidad desbloqueada: VELOCIDAD +");
                 break;
 
             case 2:
                 highJump = true;
-                movement.impulse += 5f;
+                movement.jumpImpulse += 5f;
                 Debug.Log("Habilidad desbloqueada: SALTO ALTO");
                 break;
 

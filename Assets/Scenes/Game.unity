@@ -1392,7 +1392,7 @@ GameObject:
   - component: {fileID: 1553428010}
   m_Layer: 0
   m_Name: Escenario
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1504,7 +1504,7 @@ Transform:
   m_GameObject: {fileID: 1676028464}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.47, y: -4.4, z: 0}
+  m_LocalPosition: {x: -7.47, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1.0375, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1522,10 +1522,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f866859d195c4ea4c8df05ad7e16f835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 5
-  gravity: 9.8
-  impulse: 9
-  groundY: -4.5
+  moveSpeed: 5
+  jumpImpulse: 8.5
+  maxJumps: 2
 --- !u!70 &1676028469
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1618,6 +1617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704d3767ba1228a40bafa8a349f3b881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecogerObjeto
+  objetoSR: {fileID: 0}
 --- !u!1 &1865706310
 GameObject:
   m_ObjectHideFlags: 0
