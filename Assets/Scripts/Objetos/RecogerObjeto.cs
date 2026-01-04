@@ -1,24 +1,33 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RecogerObjeto : MonoBehaviour
 {
+    [Header("Configuración")]
+    public string nombreDeEstaFruta;
 
-    public SpriteRenderer objetoSR;
+    private Contador scriptContador;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        objetoSR = GetComponent<SpriteRenderer>();
+       
+        scriptContador = Object.FindAnyObjectByType<Contador>();
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+       
+        if (collision.CompareTag("Player"))
         {
-            objetoSR.enabled = false;
-            Destroy(this.gameObject);
-        }
-    }
+            if (scriptContador != null)
+            {
+               
+                scriptContador.ProcesarFrutaRecogida(nombreDeEstaFruta);
+            }
 
+            
+            Destroy(gameObject);
+            Debug.Log("Has recogido una: " + nombreDeEstaFruta );
+        
+    }
+    }   
 }
