@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class RecogerObjeto : MonoBehaviour
 {
     [Header("Configuración")]
@@ -31,8 +31,7 @@ public class RecogerObjeto : MonoBehaviour
             if (frutasRecogidas == frutasTotales)
             {
                 Debug.Log("Has recogido todas las frutas");
-                MenuVictoria menuVictoria = Object.FindAnyObjectByType<MenuVictoria>();
-                menuVictoria.Victory();
+                SceneManager.LoadScene("Victoria");
             }
         }
     }

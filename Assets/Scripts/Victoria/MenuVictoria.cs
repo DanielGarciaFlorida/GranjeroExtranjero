@@ -2,28 +2,24 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.EventSystems;
+using Unity.VisualScripting;
+using UnityEngine.Events;
 
 public class MenuVictoria : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI victory;
     [SerializeField] Button restartButton;
 
-    void Start()
+    public void Start()
     {
-        gameObject.SetActive(false);
+        UnityEvent restart = new UnityEvent();
+        restartButton.onClick.AddListener(Restart);
     }
-
-    public void Victory()
+    
+    public void Restart()
     {
-        gameObject.SetActive(true);
-        if(restartButton)
-        {
-            Restart();
-        }
-    }
-
-    void Restart()
-    {
+        Debug.Log("Reiniciando el nivel...");
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level_Final");
     }
 }
