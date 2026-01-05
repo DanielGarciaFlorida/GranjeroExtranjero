@@ -1,70 +1,38 @@
 using UnityEngine;
-using TMPro;
 using System.Collections;
 
 public class NPC_Vieja : MonoBehaviour
 {
-    Collider2D npcCollider;
-    [SerializeField] public TextMeshProUGUI dialogueText;
-    public string[] lines;
-    public float textSpeed = 0.05f;
-    private int index = 0;
+    public Transform player;
+    public GameObject messageUI;
+    public bool messageShowm = false;
+    public float displayTime = 3f;
 
+    public
     void Start()
     {
-        dialogueText.text = string.Empty;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+       if (messageUI != null)
         {
-            Debug.Log("Player entered NPC_Vieja trigger.");
-
-            StartDialogue();
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (dialogueText.text == lines[index])
-                {
-                    NextLine();
-                }
-                else
-                {
-                    StopAllCoroutines();
-                    dialogueText.text = lines[index];
-                }
-            }
+            messageUI.SetActive(false);
         }
     }
 
-    public void StartDialogue()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        index = 0;
-        dialogueText.text = string.Empty;
-        StartCoroutine(TypeLine());
-    }
-
-    IEnumerator TypeLine()
-    {
-        foreach (char c in lines[index].ToCharArray())
+        if (other.transform == player && !messageShowm)
         {
-            dialogueText.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            messageUI.SetActive(true);
+            messageShowm = true;
+            StartCoroutine(HideMessageAfterTime() );
         }
     }
-
-    private void NextLine()
+    
+    private IEnumerator HideMessageAfterTime()
     {
-        if (index < lines.Length - 1)
+        yield return new WaitForSeconds(displayTime);
+        if (messageUI != null)
         {
-            index++;
-            dialogueText.text = string.Empty;
-            StartCoroutine(TypeLine());
-        }
-        else
-        {
-            gameObject.SetActive(false);
+            messageUI.SetActive(false );
         }
     }
 }

@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8173bf2316862234896e9d7408cdfd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VidaJugador
-  salud: -1
+  salud: -3
   maxSalud: 3
   jugadorSR: {fileID: 4194330860325146823}
   playermovement: {fileID: 8498178055070049758}
