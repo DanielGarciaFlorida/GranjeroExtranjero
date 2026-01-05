@@ -14,8 +14,8 @@ public class PlayerMovement : MonoBehaviour
 	private void Start()
 	{
 		moveSpeed = 5f;
-		gravity = 9.8f;
-		jumpImpulse = 8.5f;
+		gravity = 11.25f;
+		jumpImpulse = 12.8f;
 		groundY = -4.5f;
 		verticalVelocity = 0f;
 		//jumpsLeft = 2;
