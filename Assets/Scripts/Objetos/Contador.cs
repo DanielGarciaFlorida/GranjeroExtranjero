@@ -3,7 +3,6 @@ using TMPro;
 
 public class Contador : MonoBehaviour
 {
-   
     private string[] catalogoFrutas = { "Manzana", "Calabaza", "Zanahoria" };
 
     [Header("Cantidades")]
@@ -14,31 +13,46 @@ public class Contador : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI textoUI;
 
-    
+    //Método iterativo
     public void ProcesarFrutaRecogida(string nombreFruta)
     {
         bool coincidenciaEncontrada = false;
-
         for (int i = 0; i < catalogoFrutas.Length; i++)
         {
             if (nombreFruta == catalogoFrutas[i])
             {
-              ActualizarCantidad(i);
-              coincidenciaEncontrada = true;
-
-                
-                Debug.Log("Has recogido una: " + catalogoFrutas[i]);
-
-                break; 
+                ActualizarCantidad(i);
+                coincidenciaEncontrada = true;
+                Debug.Log("Has recogido una (Iterativo): " + catalogoFrutas[i]);
+                break;
             }
         }
+        if (!coincidenciaEncontrada) Debug.LogWarning("La fruta '" + nombreFruta + "' no está en el catálogo.");
+        DibujarEnPantalla();
+    }
 
-        if (!coincidenciaEncontrada)
+    //Método recursivo 
+    public void ProcesarFrutaRecursiva(string nombreFruta, int indice)
+    {
+     
+        if (indice >= catalogoFrutas.Length)
         {
             Debug.LogWarning("La fruta '" + nombreFruta + "' no está en el catálogo.");
+            DibujarEnPantalla();
+            return;
         }
 
-        DibujarEnPantalla();
+       
+        if (nombreFruta == catalogoFrutas[indice])
+        {
+            ActualizarCantidad(indice);
+            Debug.Log("Has recogido una (Recursivo): " + catalogoFrutas[indice]);
+            DibujarEnPantalla();
+            return;
+        }
+
+      
+        ProcesarFrutaRecursiva(nombreFruta, indice + 1);
     }
 
     void ActualizarCantidad(int indice)
@@ -51,8 +65,6 @@ public class Contador : MonoBehaviour
     void DibujarEnPantalla()
     {
         if (textoUI != null)
-        {
             textoUI.text = $"Manzanas: {cantManzanas}\nCalabazas: {cantCalabazas}\nZanahorias: {cantZanahorias}";
-        }
     }
 }
