@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3965576828315145018}
   - component: {fileID: 1886015970919003106}
   - component: {fileID: 23691119353319041}
+  - component: {fileID: 2742732045318237217}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -105,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c43a204a26b034db94303303720f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Script
-  player: {fileID: 0}
+  player: {fileID: 7714344975939622005, guid: f1573e72c3d56cc42a55c5a09fd295cb, type: 3}
 --- !u!114 &1886015970919003106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92230cf236e35554780b1aa1dd20b555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: "Assembly-CSharp::Da\xF1oEnemigo"
-  vidaJugador: {fileID: 0}
+  vidaJugador: {fileID: 5250667670438388673, guid: f1573e72c3d56cc42a55c5a09fd295cb, type: 3}
   "da\xF1o": 1
 --- !u!61 &23691119353319041
 BoxCollider2D:
@@ -166,3 +167,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &2742732045318237217
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072356361739990216}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
