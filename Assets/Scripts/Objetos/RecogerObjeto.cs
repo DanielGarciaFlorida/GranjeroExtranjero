@@ -6,11 +6,12 @@ public class RecogerObjeto : MonoBehaviour
     public string nombreDeEstaFruta;
 
     private Contador scriptContador;
+    private int frutasRecogidas;
+    [SerializeField] private int frutasTotales;
 
     void Start()
     {
-       
-        scriptContador = Object.FindAnyObjectByType<Contador>();
+       scriptContador = Object.FindAnyObjectByType<Contador>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,14 +21,19 @@ public class RecogerObjeto : MonoBehaviour
         {
             if (scriptContador != null)
             {
-               
                 scriptContador.ProcesarFrutaRecogida(nombreDeEstaFruta);
             }
 
-            
             Destroy(gameObject);
-            Debug.Log("Has recogido una: " + nombreDeEstaFruta );
-        
+            Debug.Log("Has recogido una: " + nombreDeEstaFruta);
+            frutasRecogidas++;
+
+            if (frutasRecogidas == frutasTotales)
+            {
+                Debug.Log("Has recogido todas las frutas");
+                MenuVictoria menuVictoria = Object.FindAnyObjectByType<MenuVictoria>();
+                menuVictoria.Victory();
+            }
+        }
     }
-    }   
 }
