@@ -398,10 +398,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f866859d195c4ea4c8df05ad7e16f835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 5
+  moveSpeed: 0
   gravity: 9.8
-  impulse: 8.5
-  groundY: -4.5
+  jumpImpulse: 0
+  jumpsLeft: 0
+  maxJumps: 2
+  groundCheck: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckRadius: 0.1
 --- !u!212 &268252147
 SpriteRenderer:
   m_ObjectHideFlags: 0
