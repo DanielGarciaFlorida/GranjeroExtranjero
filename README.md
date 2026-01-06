@@ -1,3 +1,18 @@
+#### Realizado por: 
+
+**Daniel García Navarro -->** @DanielGarciaFlorida & @DanielGarcia-1907 
+
+**Julio Herraez Vila-->** @Juhevi01 
+
+**Isabella McBrown García -->** @ismcga 
+
+**Adrià Rodríguez Martínez -->** @Adria2304 
+
+**Nicole Guerra Cantú -->** @thaanxtos 
+
+**Carmen Guardino de la Flor -->** @dguardinoflor 
+
+
 El proyecto consiste en un juego al estilo Super Mario Bross o Hollow Knight. 
 
 ## Mecánica de movimiento del jugador
@@ -64,10 +79,6 @@ La función GetSelectedSkill() devuelve el índice de la opción final seleccion
 
 ![](/README_Content/foto7.jpeg)
 
-Y este sería el resultado, completamente funcional.
-
-![](/README_Content/video1.gif)
-
 ## Sistema de vidas
 
 Hemos logrado implementar un sistema de puntos de salud, en donde por cada golpe del enemigo se resta un corazón, y al llegar a 3 corazones vacíos el jugador "muere".
@@ -111,3 +122,64 @@ El jugador debe tener Rigibody2D, ya que sin Rigibody2D no hay OnTriggerEnter2D.
 Y así sería el resultado, ahora el jugador puede recolectar los objetos del mapa.
 
 ![](/README_Content/video03.gif)
+
+## Implementación de algoritmo con estrategia algorítmica 
+
+**Script:** Enemy_Script.cs 
+
+**Estrategia utilizada:** Algoritmo Voraz (Greedy) 
+
+### Descripción del algoritmo 
+Implementa un comportamiento de enemigo basado en la estrategia voraz, que consiste en tomar en cada frame la decisión local que más reduce la distancia al jugador. Esta estrategia garantiza que el enemigo siempre toma la mejor decisión local para acercarse al jugador 
+
+El comportamiento se desarrolla de la siguiente manera: 
+
+1.Se calcula la distancia horizontal entre el enemigo y el jugador. 
+2.Si el jugador está dentro del rango de detección (detectionRange) pero fuera de la distancia mínima de parada (stopDistance), el enemigo calcula la dirección hacia el jugador. 
+3.Se lanza un raycast hacia esa dirección para detectar posibles obstáculos cercanos (obstacleDetectionDistance). 
+4.Si se detecta un obstáculo, el enemigo sube ligeramente sobre él (obstacleStepHeight) mientras mantiene la dirección hacia el jugador. 
+5.Si no hay obstáculo, el enemigo se mueve normalmente hacia el jugador. 
+6.El sprite se orienta siempre hacia el jugador ajustando la escala en X (scale.x). 
+
+![](/README_Content/foto22.png)
+
+### Análisis de costes 
+
+En cuanto al coste temporal, el algoritmo presenta una complejidad O(1), ya que la lógica de movimiento y el cálculo del raycast se ejecutan una única vez por frame, independientemente del tamaño o la complejidad del nivel. 
+
+Respecto al coste espacial, también es O(1), puesto que no se crean estructuras de datos adicionales y únicamente se emplean variables temporales durante la ejecución. 
+
+La principal ventaja de la estrategia voraz utilizada es su alta eficiencia en enemigos sencillos: permite reaccionar en tiempo real ante el entorno y requiere un consumo mínimo de recursos. 
+
+Como desventaja, esta estrategia no garantiza la obtención del camino óptimo en escenarios complejos o con múltiples obstáculos, ya que las decisiones se toman de forma local sin considerar una planificación global. 
+
+## Implementación de método iterativa y su forma recursiva 
+
+
+**Script:** Contador.cs
+
+**Método utilizado:** Iterativo y recursivo
+
+### Sistema de Contador de Frutas 
+
+Se elimino el inventario anterior y se ha desarrollado un contador que identifica y contabiliza los tres tipos de frutas del juego: Manzana, Calabaza y Zanahoria. El núcleo de este sistema es un algoritmo iterativo que utiliza un bucle for para recorrer un catálogo de referencias, comparando el nombre del objeto colisionado con los datos del sistema para asignar el incremento al contador correcto de forma eficiente. 
+
+![](/README_Content/foto23.png)
+
+Por otro lado también se desarrolló una versión recursiva adicional en el mismo script. Ambas versiones tienen un coste temporal O(n), pero la versión iterativa es superior al tener un coste espacial O(1) (constante) frente al O(n) de la recursividad, que consume memoria en la pila de llamadas. Se eligió la versión iterativa por su mayor legibilidad y eficiencia en Unity. 
+
+![](/README_Content/foto24.png)
+
+### Implementación de probabilidad uniforme 
+
+**Script:** RuletaUI.cs. 
+
+**Probabilidad utilizada:** Uniforme 
+
+La selección se utiliza para elegir aleatoriamente una habilidad cuando el jugador abre un cofre. La probabilidad uniforme se consigue mediante un recorrido secuencial de las habilidades, donde cada una ocupa una posición fija en la ruleta. La animación avanza por los distintos paneles y se detiene en uno de ellos, que representa la habilidad otorgada.  
+
+La habilidad seleccionada se devuelve como un índice y se utiliza para desbloquear una de las cuatro habilidades del jugador (doble salto, aumento de velocidad, salto alto o dash). 
+
+![](/README_Content/video1.gif)
+
+
