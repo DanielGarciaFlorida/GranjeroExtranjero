@@ -151,3 +151,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecogerObjeto
   nombreDeEstaFruta: Calabaza
+  frutasTotales: 3

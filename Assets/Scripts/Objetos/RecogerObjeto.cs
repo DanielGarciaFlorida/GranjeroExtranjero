@@ -6,8 +6,6 @@ public class RecogerObjeto : MonoBehaviour
     public string nombreDeEstaFruta;
 
     private Contador scriptContador;
-    private int frutasRecogidas;
-    [SerializeField] private int frutasTotales;
 
     void Start()
     {
@@ -22,17 +20,11 @@ public class RecogerObjeto : MonoBehaviour
             if (scriptContador != null)
             {
                 scriptContador.ProcesarFrutaRecogida(nombreDeEstaFruta);
+                scriptContador.FrutaRecogida();
             }
 
             Destroy(gameObject);
             Debug.Log("Has recogido una: " + nombreDeEstaFruta);
-            frutasRecogidas++;
-
-            if (frutasRecogidas == frutasTotales)
-            {
-                Debug.Log("Has recogido todas las frutas");
-                SceneManager.LoadScene("Victoria");
-            }
         }
     }
 }

@@ -13,6 +13,9 @@ public class Contador : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI textoUI;
 
+    public int totalFrutas = 3;
+    private int frutasRecogidasGlobal = 0;
+
     //Método iterativo
     public void ProcesarFrutaRecogida(string nombreFruta)
     {
@@ -67,4 +70,16 @@ public class Contador : MonoBehaviour
         if (textoUI != null)
             textoUI.text = $"Manzanas: {cantManzanas}\nCalabazas: {cantCalabazas}\nZanahorias: {cantZanahorias}";
     }
+
+	public void FrutaRecogida()
+	{
+		frutasRecogidasGlobal++;
+		Debug.Log("Frutas recogidas: " + frutasRecogidasGlobal);
+
+		if (frutasRecogidasGlobal >= totalFrutas)
+		{
+			UnityEngine.SceneManagement.SceneManager.LoadScene("Victoria");
+		}
+	}
+
 }
